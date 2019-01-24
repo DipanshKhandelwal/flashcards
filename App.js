@@ -1,13 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { createMaterialTopTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './src/reducers'
 import StatusBar from './src/components/StatusBar'
 import DeckDetails from './src/components/DeckDetails'
 import DeckList from './src/components/DeckList'
 import CreateDeck from './src/components/CreateDeck'
+import thunk from 'redux-thunk'
+import middleware from './src/middleware'
 
 const Tabs = createMaterialTopTabNavigator({
   DeckList: {
@@ -61,7 +63,7 @@ const MainNavigator = createAppContainer(
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer)} >
+      <Provider store={createStore(reducer, middleware)} >
         <View style={{ flex: 1 }} >
           <StatusBar backgroundColor={'#ffffff'} basStyle='dark-content' />
           <MainNavigator />
