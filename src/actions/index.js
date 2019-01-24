@@ -32,3 +32,11 @@ export const handleReceiveDecks = () => {
         })
     }
 }
+
+export const handleAddDeck = ({ title }) => {
+    return (dispatch) => {
+        return saveDeck(title).then((deck) => {
+            dispatch(addDeck(deck))
+        })
+    }
+}
