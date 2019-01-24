@@ -1,3 +1,5 @@
+import { fetchDecks, updateDeck, saveDeck } from '../utils/api'
+
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const REMOVE_DECK = 'REMOVE_DECK'
@@ -21,4 +23,12 @@ export const removeDeck = (deck) => {
       type: REMOVE_DECK,
       deck
   }
+}
+
+export const handleReceiveDecks = () => {
+    return (dispatch) => {
+        return fetchDecks().then((decks) => {
+            dispatch(receiveDecks(JSON.parse(decks)))
+        })
+    }
 }
