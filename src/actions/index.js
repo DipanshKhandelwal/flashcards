@@ -1,4 +1,4 @@
-import { fetchDecks, updateDeck, saveDeck } from '../utils/api'
+import { fetchDecks, deleteDeck, saveDeck } from '../utils/api'
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
@@ -37,6 +37,14 @@ export const handleAddDeck = ({ title }) => {
     return (dispatch) => {
         return saveDeck(title).then((deck) => {
             dispatch(addDeck(deck))
+        })
+    }
+}
+
+export const handleRemoveDeck = (deck) => {
+    return (dispatch) => {
+        return deleteDeck(deck.id).then(() => {
+            dispatch(removeDeck(deck))
         })
     }
 }

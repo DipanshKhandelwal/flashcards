@@ -1,11 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
+import { connect } from 'react-redux'
+import { handleRemoveDeck } from '../actions/index'
 
 class DeckDetails extends React.Component {
+
+  deleteDeck = (deck) => {
+    this.props.dispatch(handleRemoveDeck(deck))
+    this.props.navigation.navigate('DeckList')
+  }
+
   render() {
-
     const deck = this.props.navigation.getParam('deck', {})
-
     return (
       <View style={{ flex: 1, backgroundColor: '#cfcfcf' }} >
         <View style={styles.headingContainer} >
@@ -19,7 +25,7 @@ class DeckDetails extends React.Component {
         <View style={{ flex: 1, justifyContent: 'space-around' }} >
           <Button style={{ flex: 1 }} title="Add Card" />
           <Button style={{ flex: 1 }} title="Start Quiz" />
-          <Button style={{ flex: 1 }} title="Delete Deck" />
+          <Button style={{ flex: 1 }} title="Delete Deck" onPress={() => this.deleteDeck(deck)} />
         </View>
       </View>
     )
@@ -36,4 +42,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default DeckDetails
+export default connect()(DeckDetails)

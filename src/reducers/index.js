@@ -13,10 +13,10 @@ export default decks = (state = {}, action) => {
         [action.deck.id]: action.deck
       }
     case REMOVE_DECK:
-      return {
-        ...state,
-        ...action.deck
-      }
+      const newState = state
+      newState[action.deck.id] = undefined
+      delete newState[action.deck.id]
+      return { ...newState }
     default:
       return state
   }

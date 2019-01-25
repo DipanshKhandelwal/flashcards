@@ -15,3 +15,13 @@ export const saveDeck = (title) => {
         return deck
     })
 }
+
+export const deleteDeck = (id) => {
+    return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
+        .then((results) => {
+            const data = JSON.parse(results)
+            data[id] = undefined
+            delete data[id]
+            AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(data))
+        })
+}
