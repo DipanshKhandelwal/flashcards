@@ -16,6 +16,7 @@ class CreateDeck extends React.Component {
   addButtonPressed = () => {
     this.props.dispatch(handleAddDeck({ title: this.state.text }))
     this.setState({ text: '' })
+    this.props.navigation.navigate('DeckList')
   }
 
   render() {

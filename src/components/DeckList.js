@@ -10,6 +10,10 @@ class DeckList extends React.Component {
     this.props.dispatch(handleReceiveDecks())
   }
 
+  deckClicked = (deck) => {
+    this.props.navigation.navigate('DeckDetails', {deck: deck})
+  }
+
   render() {
 
     const { deckIds, decks } = this.props
@@ -20,13 +24,16 @@ class DeckList extends React.Component {
           <Text style={styles.heading} >DeckList</Text>
         </View>
         <View style={{ flex: 1 }} >
-          {
-            deckIds ?
-            deckIds.map((id) => 
-              <DeckElement key={id} title={decks[id].title} />
-            )
-            : null
-          }
+          <FlatList
+            data={deckIds}
+            renderItem={({item}) => {
+              return <DeckElement key={item} deck={decks[item]} deckClicked={this.deckClicked} />
+            }}
+            keyExtractor={(item) => item }
+
+          />
+
+
         </View>
       </View>
     )

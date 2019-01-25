@@ -1,11 +1,14 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 
 class DeckElement extends React.Component {
   render() {
+    const { deck } = this.props
     return (
       <View style={{ flex: 1, padding: 20 }} >
-        <Text>DeckElement</Text>
+        <TouchableOpacity onPress={() => this.props.deckClicked(deck)} >
+          <Text style={{ fontSize: 20 }} >{deck.title}</Text>
+        </TouchableOpacity>
       </View>
     )
   }
