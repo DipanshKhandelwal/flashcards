@@ -1,4 +1,4 @@
-import { ADD_DECK, REMOVE_DECK, RECEIVE_DECKS } from '../actions'
+import { ADD_DECK, REMOVE_DECK, RECEIVE_DECKS, ADD_CARD } from '../actions'
 
 export default decks = (state = {}, action) => {
   switch (action.type) {
@@ -13,10 +13,17 @@ export default decks = (state = {}, action) => {
         [action.deck.id]: action.deck
       }
     case REMOVE_DECK:
-      const newState = state
+      let newState = state
       newState[action.deck.id] = undefined
       delete newState[action.deck.id]
       return { ...newState }
+    case ADD_CARD:
+      let newStateAgain = state
+      newStateAgain[action.deckId].cards = {
+        ...newStateAgain[action.deckId].cards,
+        [action.card.id]: action.card
+      }
+      return { ...newStateAgain }
     default:
       return state
   }
