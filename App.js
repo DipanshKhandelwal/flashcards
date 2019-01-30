@@ -8,6 +8,7 @@ import StatusBar from './src/components/StatusBar'
 import DeckDetails from './src/components/DeckDetails'
 import DeckList from './src/components/DeckList'
 import CreateDeck from './src/components/CreateDeck'
+import CreateCard from './src/components/CreateCard'
 import thunk from 'redux-thunk'
 import middleware from './src/middleware'
 
@@ -53,6 +54,12 @@ const MainNavigator = createAppContainer(
     },
     DeckDetails: {
       screen: DeckDetails,
+      navigationOptions: {
+        header: null
+      }
+    },
+    CreateCard: {
+      screen: CreateCard,
       navigationOptions: {
         header: null
       }

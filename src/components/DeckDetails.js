@@ -23,7 +23,7 @@ class DeckDetails extends React.Component {
           <Text style={styles.heading} >{deck.timestamp}</Text>
         </View>
         <View style={{ flex: 1, justifyContent: 'space-around' }} >
-          <Button style={{ flex: 1 }} title="Add Card" />
+          <Button style={{ flex: 1 }} title="Add Card" onPress={() => this.props.navigation.navigate('CreateCard', { deckId: deck.id })} />
           <Button style={{ flex: 1 }} title="Start Quiz" />
           <Button style={{ flex: 1 }} title="Delete Deck" onPress={() => this.deleteDeck(deck)} />
         </View>
