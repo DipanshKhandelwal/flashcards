@@ -10,6 +10,30 @@ class CreateCard extends React.Component {
     answer: ''
   }
 
+  answerChange = (answer) => {
+    this.setState({ answer })
+  }
+
+  questionChange = (question) => {
+    this.setState({ question })
+  }
+
+  addButtonPressed = () => {
+    const deckId = this.props.navigation.getParam('deckId', null)
+    const { question, answer } = this.state
+
+    if (deckId) {
+      this.props.dispatch(
+        handleAddCard({
+          question: question,
+          answer: answer,
+          deckId: deckId
+        }))
+      this.setState({ text: '' })
+      this.props.navigation.navigate('DeckList')
+    }
+  }
+
   render() {
     const { question, answer } = this.state
     return (
