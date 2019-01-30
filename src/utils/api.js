@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-import { getNewDeck } from './helpers'
+import { getNewDeck, getNewCard } from './helpers'
 
 FLASHCARDS_STORAGE_KEY = 'dipansh:flashcards'
 
@@ -24,4 +24,15 @@ export const deleteDeck = (id) => {
             delete data[id]
             AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(data))
         })
+}
+
+export const saveCard = (question, answer, deckId) => {
+    let card = getNewCard(question, answer)
+    return AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
+        [deckId]: {
+            cards: card
+        } 
+    })).then(() => {
+        return card
+    })
 }

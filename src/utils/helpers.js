@@ -9,3 +9,12 @@ export function getNewDeck(title) {
     timestamp: Date.now(),
   }
 }
+
+export function getNewCard(question, answer) {
+  return {
+    id: generateUID(),
+    question: question,
+    answer: answer,
+    timestamp: Date.now(),
+  }
+}
