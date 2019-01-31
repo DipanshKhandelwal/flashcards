@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
-import { Button } from 'react-native-elements'
+import { View, TextInput, StyleSheet } from 'react-native'
+import { Button, Card } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { handleAddCard } from '../actions/index'
 import { LinearGradient } from 'expo'
@@ -40,10 +40,11 @@ class CreateCard extends React.Component {
     const { question, answer } = this.state
     return (
       <View style={styles.container} >
-        <View style={[styles.container, justifyContent = 'space-around', flex = 1]} >
-          <Text style={styles.heading} >
-            Add a new card !!
-          </Text>
+        <Card
+          containerStyle={{ flex: 1, marginBottom: 50, marginTop: 50 }}
+          titleStyle={{ fontSize: 50 }}
+          wrapperStyle={{ display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-evenly', padding: 30 }}
+          title="Add new card !!">
           <TextInput
             style={styles.input}
             placeholder={"Question ?"}
@@ -56,8 +57,6 @@ class CreateCard extends React.Component {
             onChangeText={this.answerChange}
             value={answer}
           />
-        </View>
-        <View style={[styles.container, padding = 10]} >
           <Button
             onPress={this.addButtonPressed}
             title={"Create Card"}
@@ -70,7 +69,7 @@ class CreateCard extends React.Component {
               end: [1, 0],
             }}
           />
-        </View>
+        </Card>
       </View>
     )
   }
@@ -79,28 +78,15 @@ class CreateCard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e2f0f1'
-  },
-  heading: {
-    flex: 10,
-    margin: 50,
-    fontSize: 35,
-    fontWeight: '500',
-    color: '#10455b',
-    alignSelf: 'center'
+    backgroundColor: '#e2f0f1',
+    padding: 15,
+    justifyContent: 'center'
   },
   input: {
-    flex: 1,
-    padding: 15,
-    minWidth: 300,
-    paddingRight: 30,
-    margin: 30,
-    paddingLeft: 30,
     borderWidth: 0.8,
-    borderColor: 'grey'
-  },
+    borderColor: 'grey',
+    padding: 15
+  }
 })
 
 const mapStateToProps = ({ decks }) => {
