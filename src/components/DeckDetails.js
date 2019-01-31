@@ -48,6 +48,7 @@ class DeckDetails extends React.Component {
               start: [.3, 0],
               end: [1, 0],
             }}
+            onPress={() => this.props.navigation.navigate('Quiz', { deck: deck })}
             buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
             title='START QUIZ' />
           <Button
