@@ -12,6 +12,13 @@ class Quiz extends React.Component {
     deck: null
   }
 
+  reset = () => {
+    this.setState({
+      index: 0,
+      score: 0,
+    })
+  }
+
   answered = (answer) => {
     var marks = 0
     if (answer == 'correct') marks += 1
@@ -52,7 +59,7 @@ class Quiz extends React.Component {
             />
             : <Score
               navigation={this.props.navigation}
-              deck={this.state.deck}
+              reset={this.reset}
               score={score}
               totalQuestions={cards.length}
             />
