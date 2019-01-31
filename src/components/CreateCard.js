@@ -1,7 +1,9 @@
 import React from 'react'
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
+import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { Button } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { handleAddCard } from '../actions/index'
+import { LinearGradient } from 'expo'
 
 class CreateCard extends React.Component {
 
@@ -55,11 +57,18 @@ class CreateCard extends React.Component {
             value={answer}
           />
         </View>
-        <View style={styles.container} >
+        <View style={[styles.container, padding = 10]} >
           <Button
             onPress={this.addButtonPressed}
             title={"Create Card"}
+            titleStyle={{ color: 'white', marginRight: 20, marginLeft: 20, marginTop: 10, marginBottom: 10 }}
             disabled={answer === '' || question === ''}
+            ViewComponent={LinearGradient}
+            linearGradientProps={{
+              colors: ['#10455bdd', '#2aa1af'],
+              start: [.3, 0],
+              end: [1, 0],
+            }}
           />
         </View>
       </View>
@@ -71,18 +80,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#e2f0f1'
   },
   heading: {
     flex: 10,
     margin: 50,
     fontSize: 35,
-    color: 'blue',
+    fontWeight: '500',
+    color: '#10455b',
     alignSelf: 'center'
   },
   input: {
     flex: 1,
-    padding: 10,
+    padding: 15,
     minWidth: 300,
     paddingRight: 30,
     margin: 30,
