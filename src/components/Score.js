@@ -29,7 +29,7 @@ class Score extends React.Component {
                 end: [1, 0],
               }}
               onPress={() => reset()}
-              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
               title='Play Again !!' />
             <Button
               icon={<Icon containerStyle={{ margin: 5, marginRight: 15 }} name='stop-circle' type='font-awesome' color='#ffffff' />}
@@ -41,7 +41,7 @@ class Score extends React.Component {
                 end: [1, 0],
               }}
               onPress={() => this.props.navigation.navigate('DeckList')}
-              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
               title='End !!' />
           </View>
         </Card>

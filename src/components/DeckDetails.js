@@ -37,20 +37,39 @@ class DeckDetails extends React.Component {
               end: [1, 0],
             }}
             onPress={() => this.props.navigation.navigate('CreateCard', { deckId: deck.id })}
-            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
             title='ADD CARD' />
-          <Button
-            icon={<Icon containerStyle={{ margin: 5, marginRight: 15 }} name='play' type='font-awesome' color='#ffffff' />}
-            backgroundColor='#03A9F4'
-            ViewComponent={LinearGradient}
-            linearGradientProps={{
-              colors: ['#205704', '#499a1f'],
-              start: [.3, 0],
-              end: [1, 0],
-            }}
-            onPress={() => this.props.navigation.navigate('Quiz', { deck: deck })}
-            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-            title='START QUIZ' />
+          {
+            deck.cards && Object.keys(deck.cards).length > 0
+              ?
+              <Button
+                icon={<Icon containerStyle={{ margin: 5, marginRight: 15 }} name='play' type='font-awesome' color='#ffffff' />}
+                backgroundColor='#03A9F4'
+                ViewComponent={LinearGradient}
+                linearGradientProps={{
+                  colors: ['#205704', '#499a1f'],
+                  start: [.3, 0],
+                  end: [1, 0],
+                }}
+                onPress={() => this.props.navigation.navigate('Quiz', { deck: deck })}
+                buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
+                title='START QUIZ'
+              />
+              :
+              <Button
+                icon={<Icon containerStyle={{ margin: 5, marginRight: 15 }} name='play' type='font-awesome' color='#dedede' />}
+                backgroundColor='#03A9F4'
+                ViewComponent={LinearGradient}
+                linearGradientProps={{
+                  colors: ['#858585', '#bfbfbf'],
+                  start: [.3, 0],
+                  end: [1, 0],
+                }}
+                buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+                title='START QUIZ'
+                titleProps={{ color: '#dedede' }}
+              />
+          }
           <Button
             icon={<Icon containerStyle={{ margin: 5, marginRight: 15 }} name='trash' type='font-awesome' color='#ffffff' />}
             backgroundColor='#03A9F4'
@@ -61,7 +80,7 @@ class DeckDetails extends React.Component {
               end: [1, 0],
             }}
             onPress={() => this.deleteDeck(deck)}
-            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
             title='DELETE DECK' />
         </Card>
       </View>

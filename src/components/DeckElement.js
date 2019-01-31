@@ -12,7 +12,7 @@ class DeckElement extends React.Component {
       <Card containerStyle={{ padding: 0 }} >
         <TouchableHighlight onPress={() => this.props.deckClicked(deck)} >
           <ListItem
-            containerStyle={{ justifyContent: 'center' }}
+            containerStyle={{ justifyContent: 'center', elevation: 10 }}
             linearGradientProps={{
               colors: ['#10455bdd', '#2aa1af'],
               start: [.3, 0],

@@ -61,7 +61,7 @@ class Question extends React.Component {
                 answered("correct")
                 this.setState({ showAnswer: false })
               }}
-              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
               title='Correct' />
             <Button
               icon={<Icon containerStyle={{ margin: 5, marginRight: 15 }} name='times' type='font-awesome' color='#ffffff' />}
@@ -76,7 +76,7 @@ class Question extends React.Component {
                 answered("incorrect")
                 this.setState({ showAnswer: false })
               }}
-              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+              buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
               title='Incorrect' />
           </View>
         </Card>

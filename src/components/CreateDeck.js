@@ -39,7 +39,7 @@ class CreateDeck extends React.Component {
           <Button
             onPress={this.addButtonPressed}
             title={"Create Card"}
-            titleStyle={{ color: 'white', marginRight: 20, marginLeft: 20, marginTop: 10, marginBottom: 10 }}
+            titleStyle={{ color: 'white', marginRight: 20, marginLeft: 20, marginTop: 10, marginBottom: 10, elevation: 10 }}
             disabled={text === ''}
             ViewComponent={LinearGradient}
             linearGradientProps={{
