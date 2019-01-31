@@ -11,18 +11,21 @@ import CreateDeck from './src/components/CreateDeck'
 import CreateCard from './src/components/CreateCard'
 import thunk from 'redux-thunk'
 import middleware from './src/middleware'
+import { Icon } from 'react-native-elements'
 
 const Tabs = createMaterialTopTabNavigator({
   DeckList: {
     screen: DeckList,
     navigationOptions: {
-      tabBarLabel: 'Deck List',
+      tabBarLabel: 'Decks',
+      tabBarIcon: <Icon name='list-ul' type='font-awesome' color='#ffffff' />,
     }
   },
   CreateDeck: {
     screen: CreateDeck,
     navigationOptions: {
-      tabBarLabel: 'Create Deck',
+      tabBarLabel: 'Add Deck',
+      tabBarIcon: <Icon name='plus-circle' type='font-awesome' color='#ffffff' />,
     }
   },
 }, {
@@ -30,8 +33,14 @@ const Tabs = createMaterialTopTabNavigator({
       header: null
     },
     tabBarOptions: {
+      showIcon: true,
+      showLabel: false,
+      indicatorStyle: {
+        backgroundColor: '#e2f0f1'
+      },
       style: {
         height: 50,
+        backgroundColor: '#10455b',
         shadowColor: 'rgba(0, 0, 0, 0.24)',
         shadowRadius: 6,
         shadowOpacity: 1,

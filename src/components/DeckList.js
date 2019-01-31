@@ -15,40 +15,22 @@ class DeckList extends React.Component {
   }
 
   render() {
-
     const { deckIds, decks } = this.props
-
     return (
-      <View style={{ flex: 1, backgroundColor: '#cfcfcf' }} >
-        <View style={styles.headingContainer} >
-          <Text style={styles.heading} >DeckList</Text>
-        </View>
-        <View style={{ flex: 1 }} >
+      <View style={{ flex: 1, backgroundColor: '#e2f0f1' }} >
+        <View style={{ flex: 1, justifyContent: 'center' }} >
           <FlatList
             data={deckIds}
             renderItem={({item}) => {
               return <DeckElement key={item} deck={decks[item]} deckClicked={this.deckClicked} />
             }}
             keyExtractor={(item) => item }
-
           />
-
-
         </View>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  headingContainer: {
-    alignItems: 'center',
-    padding: 15
-  },
-  heading: {
-    fontSize: 35
-  }
-})
 
 const mapStateToProps = (state) => {
   return {
