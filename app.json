@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "flashcards",
+    "description": "Best way to learn and practice",
     "slug": "flashcards",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -23,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.dipansh.flashcards"
+    },
+    "android": {
+      "package": "org.dipansh.flashcards"
     }
   }
 }
