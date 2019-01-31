@@ -28,11 +28,16 @@ export const deleteDeck = (id) => {
 
 export const saveCard = (question, answer, deckId) => {
     let card = getNewCard(question, answer)
-    return AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify({
-        [deckId]: {
-            cards: card
-        } 
-    })).then(() => {
-        return card
-    })
+    return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
+        .then((results) => {
+            const data = JSON.parse(results)
+            data[deckId].cards = {
+                ...data[deckId].cards,
+                [card.id]: card
+            }
+            return AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(data))
+                .then(() => {
+                    return card
+                })
+        })
 }
