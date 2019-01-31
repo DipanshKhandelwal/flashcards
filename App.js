@@ -9,7 +9,7 @@ import DeckDetails from './src/components/DeckDetails'
 import DeckList from './src/components/DeckList'
 import CreateDeck from './src/components/CreateDeck'
 import CreateCard from './src/components/CreateCard'
-import thunk from 'redux-thunk'
+import Quiz from './src/components/Quiz'
 import middleware from './src/middleware'
 import { Icon } from 'react-native-elements'
 
@@ -69,6 +69,12 @@ const MainNavigator = createAppContainer(
     },
     CreateCard: {
       screen: CreateCard,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Quiz: {
+      screen: Quiz,
       navigationOptions: {
         header: null
       }
