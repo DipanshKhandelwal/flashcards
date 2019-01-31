@@ -12,6 +12,7 @@ import CreateCard from './src/components/CreateCard'
 import Quiz from './src/components/Quiz'
 import middleware from './src/middleware'
 import { Icon } from 'react-native-elements'
+import { setLocalNotifications } from './src/utils/helpers'
 
 const Tabs = createMaterialTopTabNavigator({
   DeckList: {
@@ -83,6 +84,11 @@ const MainNavigator = createAppContainer(
 )
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotifications()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer, middleware)} >

@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 import { getNewDeck, getNewCard } from './helpers'
 
-FLASHCARDS_STORAGE_KEY = 'dipansh:flashcards'
+FLASHCARDS_STORAGE_KEY = 'dipansh:flashcards:storage'
 
 export const fetchDecks = () => {
     return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)

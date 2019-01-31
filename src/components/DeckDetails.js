@@ -3,7 +3,8 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { handleRemoveDeck } from '../actions/index'
 import { Card, Button, Text, Icon } from 'react-native-elements'
-import { LinearGradient } from 'react-native-elements';
+import { LinearGradient } from 'expo'
+import { setLocalNotifications, clearLocalNotifications } from '../utils/helpers'
 
 class DeckDetails extends React.Component {
 
@@ -51,7 +52,10 @@ class DeckDetails extends React.Component {
                   start: [.3, 0],
                   end: [1, 0],
                 }}
-                onPress={() => this.props.navigation.navigate('Quiz', { deck: deck })}
+                onPress={() => {
+                  this.props.navigation.navigate('Quiz', { deck: deck })
+                  clearLocalNotifications().then(setLocalNotifications)
+                }}
                 buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
                 title='START QUIZ'
               />
