@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".assets/icon.png" align="center" width="150">
+  <img src="./assets/icon.png" align="center" width="150">
 </p>
 
 <h1 align="center">Flashcards</h1>
@@ -15,6 +15,23 @@ cd flashcards
 ## Start
 ``` bash
 npm start
+```
+
+## Build
+
+* Android
+``` bash
+expo build:android
+```
+
+* iOS
+``` bash
+expo build:ios
+```
+
+## Install Expo CLI
+``` bash
+npm install -g expo-cli
 ```
 
 ## Download apk here
