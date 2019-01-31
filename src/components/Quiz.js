@@ -1,6 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import Question from './Question'
+import Score from './Score'
 
 class Quiz extends React.Component {
 
@@ -42,10 +43,17 @@ class Quiz extends React.Component {
     return (
       <View style={{ flex: 1, backgroundColor: '#e2f0f1', padding: 15, justifyContent: 'center' }} >
         {
-            <Question
+          index < cards.length
+            ? <Question
               answered={this.answered}
               questionNumber={index + 1}
               card={cards[index]}
+              totalQuestions={cards.length}
+            />
+            : <Score
+              navigation={this.props.navigation}
+              deck={this.state.deck}
+              score={score}
               totalQuestions={cards.length}
             />
         }
