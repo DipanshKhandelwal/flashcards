@@ -2,8 +2,14 @@ import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { Card, Icon, Button } from 'react-native-elements'
 import { LinearGradient } from 'expo'
+import { setLocalNotifications, clearLocalNotifications } from '../utils/helpers'
 
 class Score extends React.Component {
+
+  componentDidMount = () => {
+    clearLocalNotifications().then(setLocalNotifications)
+  }
+
   render() {
     const { score, totalQuestions, reset, deck } = this.props
     return (
