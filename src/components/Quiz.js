@@ -46,7 +46,7 @@ class Quiz extends React.Component {
   }
 
   render() {
-    const { index, cards, score } = this.state
+    const { index, cards, score, deck } = this.state
     return (
       <View style={{ flex: 1, backgroundColor: '#e2f0f1', padding: 15, justifyContent: 'center' }} >
         {
@@ -62,6 +62,7 @@ class Quiz extends React.Component {
               reset={this.reset}
               score={score}
               totalQuestions={cards.length}
+              deck={deck}
             />
         }
       </View>

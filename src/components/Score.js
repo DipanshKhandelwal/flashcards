@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo'
 
 class Score extends React.Component {
   render() {
-    const { score, totalQuestions, reset } = this.props
+    const { score, totalQuestions, reset, deck } = this.props
     return (
       <View style={{ flex: 1, backgroundColor: '#e2f0f1', padding: 15, justifyContent: 'center' }} >
         <Card
@@ -40,7 +40,7 @@ class Score extends React.Component {
                 start: [.3, 0],
                 end: [1, 0],
               }}
-              onPress={() => this.props.navigation.navigate('DeckList')}
+              onPress={() => this.props.navigation.navigate('DeckDetails', { deck })}
               buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
               title='End !!' />
           </View>
