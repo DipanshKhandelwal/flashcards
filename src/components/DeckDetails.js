@@ -13,7 +13,9 @@ class DeckDetails extends React.Component {
   }
 
   render() {
-    const deck = this.props.navigation.getParam('deck', {})
+    const { deckIds, decks } = this.props
+    var deck = this.props.navigation.getParam('deck', {})
+    if(deck.id == null) { deck = decks[deckIds[0]] }
     return (
       <View style={{ flex: 1, backgroundColor: '#e2f0f1', padding: 15, justifyContent: 'center' }} >
         <Card
@@ -36,7 +38,7 @@ class DeckDetails extends React.Component {
               start: [.3, 0],
               end: [1, 0],
             }}
-            onPress={() => this.props.navigation.navigate('CreateCard', { deckId: deck.id })}
+            onPress={() => this.props.navigation.navigate('CreateCard', { deck })}
             buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, elevation: 10 }}
             title='ADD CARD' />
           {
@@ -90,4 +92,12 @@ class DeckDetails extends React.Component {
   }
 }
 
-export default connect()(DeckDetails)
+const mapStateToProps = (state) => {
+  return {
+    deckIds: Object.keys(state)
+      .sort((a, b) => state[b].timestamp - state[a].timestamp),
+    decks: state
+  }
+}
+
+export default connect(mapStateToProps)(DeckDetails)

@@ -21,7 +21,8 @@ class CreateCard extends React.Component {
   }
 
   addButtonPressed = () => {
-    const deckId = this.props.navigation.getParam('deckId', null)
+    const deck = this.props.navigation.getParam('deck', null)
+    const deckId = deck.id
     const { question, answer } = this.state
 
     if (deckId) {
@@ -32,7 +33,7 @@ class CreateCard extends React.Component {
           deckId: deckId
         }))
       this.setState({ text: '' })
-      this.props.navigation.navigate('DeckList')
+      this.props.navigation.navigate('DeckDetails', { deck })
     }
   }
 
